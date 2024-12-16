@@ -3,10 +3,10 @@ node {
     checkout scm
   }
 stage ("Code Quality") {
-            steps {
-                withSonarQubeEnv("test1") {
-                    sh "npm install sonar-scanner"
-                    sh "npm run sonar"
-                }
-            }
-        }
+    steps {
+      withSonarQubeEnv("test1") {
+        sh "npm install sonar-scanner"
+        sh "npm run sonar"
+          }
+      }
+  }
