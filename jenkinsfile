@@ -2,11 +2,10 @@ node {
   stage('SCM') {
     checkout scm
   }
-stage ("Code Quality") {
-    steps {
-      withSonarQubeEnv("test1") {
-        sh "npm install sonar-scanner"
-        sh "npm run sonar"
-          }
-      }
+  stage('SonarQube Analysis') {
+    def scannerHome = tool 'test1';
+    withSonarQubeEnv() {
+      sh "${scannerHome}/bin/sonar-scanner"
+    }
   }
+}
